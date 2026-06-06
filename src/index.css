@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Glass surfaces ───────────────────────────────────────────── */
+  --color-bg:         #05040f;
+  --color-surface:    rgba(8, 6, 24, 0.55);
+  --color-surface-2:  rgba(14, 11, 36, 0.45);
+  --color-surface-3:  rgba(20, 16, 48, 0.38);
+  --color-surface-4:  rgba(28, 22, 60, 0.32);
+
+  /* ── Borders (glass-edge) ─────────────────────────────────────── */
+  --color-border:     rgba(255, 255, 255, 0.08);
+  --color-border-2:   rgba(255, 255, 255, 0.12);
+  --color-border-hi:  rgba(255, 255, 255, 0.2);
+
+  /* ── Text ─────────────────────────────────────────────────────── */
+  --color-text-primary:   #f0eeff;
+  --color-text-secondary: #b0a8d8;
+  --color-text-muted:     #6b6494;
+  --color-text-faint:     #3d3860;
+
+  /* ── Accent: Violet/Cyan (comet palette) ──────────────────────── */
+  --color-accent:       #8b7ff5;
+  --color-accent-mid:   #6b5fd4;
+  --color-accent-dim:   #4a3fa8;
+  --color-accent-cyan:  #4dd9f0;
+  --color-accent-glow:  rgba(139, 127, 245, 0.15);
+  --color-accent-glow-2: rgba(139, 127, 245, 0.28);
+  --color-cyan-glow:    rgba(77, 217, 240, 0.12);
+
+  /* ── Glass tokens ─────────────────────────────────────────────── */
+  --glass-bg:           rgba(8, 6, 28, 0.42);
+  --glass-bg-heavy:     rgba(6, 4, 20, 0.62);
+  --glass-border:       rgba(255, 255, 255, 0.09);
+  --glass-border-hi:    rgba(255, 255, 255, 0.18);
+  --glass-blur:         18px;
+  --glass-blur-heavy:   28px;
+  --glass-shadow:       0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --glass-shadow-lg:    0 16px 48px rgba(0, 0, 0, 0.55), 0 4px 16px rgba(0, 0, 0, 0.4);
+
+  /* ── Fonts ────────────────────────────────────────────────────── */
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* ── Radii ────────────────────────────────────────────────────── */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   22px;
+  --radius-2xl:  28px;
+  --radius-full: 9999px;
+
+  /* ── Z-index scale ────────────────────────────────────────────── */
+  --z-base:      1;
+  --z-dropdown:  10;
+  --z-sticky:    20;
+  --z-overlay:   30;
+  --z-modal:     40;
+  --z-toast:     50;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Background image — fixed, fills viewport ───────────────────── */
+#root {
+  position: relative;
+}
+
+#root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/src/assets/bg.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Subtle dark overlay so glass panels pop */
+#root::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(4, 3, 18, 0.45) 0%,
+    rgba(6, 4, 22, 0.3) 50%,
+    rgba(8, 5, 16, 0.5) 100%
+  );
+  z-index: 0;
+}
+
+/* Everything inside root needs to be above the bg layers */
+#root > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Glass utility ──────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-heavy {
+  background: var(--glass-bg-heavy);
+  backdrop-filter: blur(var(--glass-blur-heavy)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy)) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow-lg);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-accent-glow-2);
+  color: var(--color-text-primary);
+}
+
+/* ── Placeholder ────────────────────────────────────────────────── */
+textarea::placeholder,
+input::placeholder {
+  color: rgba(255,255,255,0.35);
+  opacity: 1;
+}
+
+/* ── Focus ring — only on keyboard-navigable elements ───────────── */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+textarea:focus-visible,
+input:focus-visible {
+  outline: none;
+}
+
+/* ── Spin keyframe (used by setup spinner) ──────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Typing indicator dots ──────────────────────────────────────── */
+@keyframes typingDot {
+  0%, 60%, 100% { opacity: 0.2; transform: translateY(0); }
+  30%            { opacity: 1;   transform: translateY(-3px); }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
