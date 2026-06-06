@@ -720,7 +720,7 @@ export function LandingScreen({ onComplete }: Props) {
               <motion.div key={mode}
                 initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 24 }}
                 transition={{ duration: 0.3, ease: EASE }}
-                style={{ position: 'fixed', inset: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 28px', overflowY: 'auto', background: 'rgba(3,2,12,0.92)' }}
+                style={{ position: 'fixed', inset: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 28px', overflowY: 'auto', background: 'rgba(3,2,12,0.75)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
               >
                 <div style={{ width: '100%', maxWidth: 400, paddingTop: 40, paddingBottom: 40 }}>
                   {mode === 'new' && onboardingPanel}
