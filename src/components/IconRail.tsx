@@ -1,4 +1,3 @@
-import { motion } from 'motion/react'
 import { Link, Images, ChartBar, MagnifyingGlass, GearSix } from '@phosphor-icons/react'
 import ottoLogo from '../assets/logo_nobg.png'
 import type { SidebarTab } from '../types'

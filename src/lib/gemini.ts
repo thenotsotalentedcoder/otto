@@ -38,7 +38,7 @@ export async function dumpAck(
   content: string,
   type: string
 ): Promise<{ ack: string; tags: string[] }> {
-  const prompt = buildDumpPrompt(content, type)
+  const prompt = buildDumpPrompt(content)
 
   const response = await ai().models.generateContent({
     model: MODEL,

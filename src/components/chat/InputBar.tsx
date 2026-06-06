@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 import {
   Paperclip,
   Image,
@@ -21,9 +21,7 @@ interface Props {
   isLoading?: boolean
 }
 
-const DEMO_MAX_SECONDS = 5
-
-export function InputBar({ onSend, isRecording, isTranscribing = false, onRecordToggle, transcribedText, onTranscriptConsumed, isMobile, isLoading }: Props) {
+export function InputBar({ onSend, isRecording, isTranscribing = false, onRecordToggle, transcribedText, onTranscriptConsumed, isMobile }: Props) {
   const [value, setValue] = useState('')
   const [showPalette, setShowPalette] = useState(false)
   const [paletteQuery, setPaletteQuery] = useState('')
@@ -31,7 +29,6 @@ export function InputBar({ onSend, isRecording, isTranscribing = false, onRecord
   const [isFocused, setIsFocused] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const elapsedRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const reduceMotion = useReducedMotion()
 
   // When parent provides a transcribed text, fill the textarea and focus it
   useEffect(() => {

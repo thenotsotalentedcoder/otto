@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Eye, EyeSlash, CheckCircle, CircleNotch, WarningCircle, SignOut, LockKey } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'motion/react'
-import { encryptVault, decryptVault, credsFromLocalStorage, credsToLocalStorage } from '../../lib/vault'
+import { encryptVault, decryptVault, credsToLocalStorage } from '../../lib/vault'
 import { saveVaultBlob, fetchVaultBlob } from '../../lib/supabase'
 import { keys } from '../../lib/keys'
 

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { ArrowLeft, Lightning, CircleDashed, ArrowsClockwise, Link, Lightbulb } from '@phosphor-icons/react'
+import { Lightning, CircleDashed, ArrowsClockwise, Link, Lightbulb } from '@phosphor-icons/react'
 
 function SectionLabel({ icon: Icon, label, first }: { icon: React.ElementType; label: string; first?: boolean }) {
   return (
