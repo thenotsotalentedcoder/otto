@@ -23,7 +23,7 @@ const TABS: { id: SidebarTab; label: string; Icon: React.ElementType }[] = [
   { id: 'browse',    label: 'Search',    Icon: MagnifyingGlass },
 ]
 
-export function Sidebar({ activeTab, onTabChange, isOpen, onClose, isMobile, allMessages }: SidebarProps) {
+export function Sidebar({ activeTab, onTabChange, isOpen, onClose, isMobile }: SidebarProps) {
   const shouldReduceMotion = useReducedMotion()
   const content = (
     <div

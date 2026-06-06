@@ -50,12 +50,18 @@ export default defineConfig({
         },
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,ico,svg,woff2}'],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/.*\.supabase\.co\/.*/i,
             handler: 'NetworkFirst',
             options: { cacheName: 'supabase-cache' },
+          },
+          {
+            urlPattern: /\.png$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'images-cache' },
           },
         ],
       },

@@ -8,8 +8,6 @@ function formatNote(note: Note): string {
     day: '2-digit', month: 'short', year: 'numeric',
   })
   const tags = note.ai_tags.length ? note.ai_tags.map(t => `#${t}`).join(' ') : ''
-  const header = `[${date} | ${note.type}${tags ? ' | ' + tags : ''}]`
-
   let body = note.content
 
   if (note.type === 'voice' && note.transcript) {
@@ -104,7 +102,7 @@ ${corpus}
 
 // ── Dump mode — single Gemini call returns ack + tags ─────────────────────────
 
-export function buildDumpPrompt(content: string, type: string): string {
+export function buildDumpPrompt(content: string): string {
   const name = keys.userName()
   const userContext = keys.userContext()
 

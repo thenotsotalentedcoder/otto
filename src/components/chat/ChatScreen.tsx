@@ -3,7 +3,7 @@ import { ChatThread } from './ChatThread'
 import { InputBar } from './InputBar'
 import type { Message, NoteType } from '../../types'
 import { insertNote, insertMessage, fetchMessages, fetchAllNotes, fetchWeeklyDigest, updateNote } from '../../lib/supabase'
-import { dumpAck, askOttoStream, generateWeeklyDigest, parseOttoAction } from '../../lib/gemini'
+import { askOttoStream, generateWeeklyDigest, parseOttoAction } from '../../lib/gemini'
 import { upsertWeeklyDigest } from '../../lib/supabase'
 import type { Note, DbMessage } from '../../lib/supabase'
 import { scrapeLink } from '../../lib/scraper'
@@ -61,11 +61,10 @@ interface Props {
   onMessagesChange?: (msgs: Message[]) => void
   isMobile?: boolean
   railOffset?: number
-  onMenuClick?: () => void
   sharedContent?: string
 }
 
-export function ChatScreen({ onMessagesChange, isMobile, railOffset = 0, onMenuClick, sharedContent }: Props) {
+export function ChatScreen({ onMessagesChange, isMobile, railOffset = 0, sharedContent }: Props) {
   const [messages, setMessages] = useState<Message[]>([])
   const [newIds, setNewIds] = useState<Set<string>>(new Set())
   const [isLoading, setIsLoading] = useState(false)

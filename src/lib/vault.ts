@@ -19,8 +19,9 @@ interface VaultBlob {
 const enc = new TextEncoder()
 const dec = new TextDecoder()
 
-function toBase64(buf: ArrayBuffer): string {
-  return btoa(String.fromCharCode(...new Uint8Array(buf)))
+function toBase64(buf: ArrayBuffer | Uint8Array): string {
+  const bytes = buf instanceof Uint8Array ? buf : new Uint8Array(buf)
+  return btoa(String.fromCharCode(...bytes))
 }
 
 function fromBase64(s: string): Uint8Array {
@@ -32,7 +33,7 @@ async function deriveKey(password: string, salt: Uint8Array): Promise<CryptoKey>
     'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
   )
   return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', salt, iterations: 600000, hash: 'SHA-256' },
+    { name: 'PBKDF2', salt: salt.buffer as ArrayBuffer, iterations: 600000, hash: 'SHA-256' },
     keyMaterial,
     { name: 'AES-GCM', length: 256 },
     false,
@@ -59,7 +60,7 @@ export async function decryptVault(blob: VaultBlob, password: string): Promise<V
   const key = await deriveKey(password, salt)
   let plain: ArrayBuffer
   try {
-    plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct)
+    plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv.buffer as ArrayBuffer }, key, ct.buffer as ArrayBuffer)
   } catch {
     throw new Error('Wrong vault password — decryption failed')
   }

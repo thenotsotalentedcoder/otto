@@ -8,6 +8,7 @@ import { useState } from 'react';
 interface LiquidGlassCardProps {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   draggable?: boolean;
   expandable?: boolean;
   width?: string;

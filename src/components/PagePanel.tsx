@@ -17,7 +17,6 @@ const PAGE_LABELS: Record<SidebarTab, string> = {
 }
 
 const PANEL_LEFT = 80
-const MOBILE_NAV_HEIGHT = 64
 
 interface Props {
   page: SidebarTab | null
@@ -26,7 +25,7 @@ interface Props {
   isMobile?: boolean
 }
 
-export function PagePanel({ page, onClose, allMessages, isMobile }: Props) {
+export function PagePanel({ page, onClose, isMobile }: Props) {
   const reduceMotion = useReducedMotion()
 
   if (isMobile) {
@@ -112,7 +111,7 @@ export function PagePanel({ page, onClose, allMessages, isMobile }: Props) {
                     {page === 'links'     && <LinksTab />}
                     {page === 'media'     && <MediaTab />}
                     {page === 'dashboard' && <DashboardTab />}
-                    {page === 'browse'    && <BrowseTab allMessages={allMessages} />}
+                    {page === 'browse'    && <BrowseTab />}
                     {page === 'settings'  && <SettingsTab />}
                   </motion.div>
                 </AnimatePresence>
@@ -202,7 +201,7 @@ export function PagePanel({ page, onClose, allMessages, isMobile }: Props) {
                     {page === 'links'     && <LinksTab />}
                     {page === 'media'     && <MediaTab />}
                     {page === 'dashboard' && <DashboardTab />}
-                    {page === 'browse'    && <BrowseTab allMessages={allMessages} />}
+                    {page === 'browse'    && <BrowseTab />}
                     {page === 'settings'  && <SettingsTab />}
                   </motion.div>
                 </AnimatePresence>

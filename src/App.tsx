@@ -92,7 +92,6 @@ export default function App() {
               onMessagesChange={handleMessagesChange}
               isMobile={isMobile}
               railOffset={isMobile ? 0 : RAIL_OFFSET}
-              onMenuClick={() => setActivePage(prev => prev ? null : 'browse')}
               sharedContent={sharedContent}
             />
           </div>
