@@ -62,8 +62,8 @@ export function PagePanel({ page, onClose, isMobile }: Props) {
                 if (info.offset.y > 80 || info.velocity.y > 400) onClose()
               }}
               className="fixed left-0 right-0 flex flex-col"
-              style={{ touchAction: 'pan-x' }}
               style={{
+                touchAction: 'pan-x',
                 top: '6%',
                 bottom: 88,
                 zIndex: 50,
