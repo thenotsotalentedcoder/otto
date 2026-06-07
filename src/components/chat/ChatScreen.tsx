@@ -389,7 +389,10 @@ export function ChatScreen({ onMessagesChange, isMobile, railOffset = 0, sharedC
 
   const panelStyle: React.CSSProperties = isMobile ? {
     position: 'fixed',
-    inset: 0,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 'calc(-1 * env(safe-area-inset-bottom, 34px))',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
