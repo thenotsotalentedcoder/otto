@@ -66,15 +66,7 @@
   padding: 0;
 }
 
-html {
-  height: 100%;
-  width: 100%;
-  /* Extend bg into safe area on iOS PWA */
-  background-color: #05040f;
-  min-height: -webkit-fill-available;
-}
-
-body, #root {
+html, body, #root {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -99,10 +91,7 @@ body {
 #root::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+  inset: 0;
   background-image: url('/src/assets/bg.png');
   background-size: cover;
   background-position: center top;
@@ -114,10 +103,7 @@ body {
 #root::after {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+  inset: 0;
   background: linear-gradient(
     160deg,
     rgba(4, 3, 18, 0.45) 0%,
