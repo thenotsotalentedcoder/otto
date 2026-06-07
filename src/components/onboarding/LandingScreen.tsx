@@ -634,22 +634,30 @@ export function LandingScreen({ onComplete }: Props) {
 
         {/* Hero — always left */}
         <motion.div layout="position" transition={{ duration: 0.45, ease: EASE }} style={{ flex: 1, maxWidth: 400, paddingTop: 40, paddingBottom: 40, flexShrink: 0 }}>
-          <motion.div {...fade(0.05)} style={{ marginBottom: 20 }}>
-            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-accent)', opacity: 0.85 }}>Personal AI · Private by design</span>
+          <motion.div {...fade(0.05)} style={{ marginBottom: 14 }}>
+            <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-accent)', opacity: 0.85 }}>Your AI &nbsp;·&nbsp; Private by design</span>
           </motion.div>
 
-          <motion.h1 {...fade(0.12)} style={{ fontSize: 'clamp(64px, 11vw, 92px)', fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 0.9, marginBottom: 28, background: 'linear-gradient(160deg, #ffffff 0%, #e8e2ff 45%, #8b7ff5 85%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <motion.h1 {...fade(0.12)} style={{ fontSize: 'clamp(48px, 7vw, 72px)', fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 0.9, marginBottom: 20, background: 'linear-gradient(160deg, #ffffff 0%, #e8e2ff 45%, #8b7ff5 85%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             otto
           </motion.h1>
 
-          <motion.p {...fade(0.2)} style={{ fontSize: 15.5, lineHeight: 1.75, color: 'rgba(220,215,255,0.62)', marginBottom: 40, maxWidth: 310 }}>
-            Your thoughts, links, and voice notes —{' '}remembered, connected, and always ready to surface.
+          <motion.p {...fade(0.2)} style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(220,215,255,0.85)', marginBottom: 8, maxWidth: 320, fontWeight: 600 }}>
+            Dump it. Ask it. Never lose a thought again.
           </motion.p>
 
-          <motion.div {...fade(0.26)} style={{ width: 32, height: 1, background: 'rgba(139,127,245,0.32)', marginBottom: 28 }} />
+          <motion.p {...fade(0.24)} style={{ fontSize: 13.5, lineHeight: 1.7, color: 'rgba(176,168,216,0.55)', marginBottom: 24, maxWidth: 310 }}>
+            Thoughts, links, voice notes — one chat. Otto remembers all of it, forever.
+          </motion.p>
 
-          <motion.div {...fade(0.3)} style={{ display: 'flex', flexDirection: 'column', gap: 11, marginBottom: 44 }}>
-            {['Bring your own Gemini & Groq keys', 'Your Supabase — your data, zero lock-in', 'Encrypted vault — restore on any device in seconds'].map(item => (
+          <motion.div {...fade(0.26)} style={{ width: 32, height: 1, background: 'rgba(139,127,245,0.32)', marginBottom: 20 }} />
+
+          <motion.div {...fade(0.3)} style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 28 }}>
+            {[
+              'Your data lives in your own accounts, not ours',
+              'Works from your phone, browser, or anywhere',
+              'No subscriptions. Bring your own AI keys',
+            ].map(item => (
               <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ width: 3, height: 3, borderRadius: '50%', background: 'var(--color-accent)', flexShrink: 0, marginTop: 9, opacity: 0.5 }} />
                 <span style={{ fontSize: 13.5, color: 'rgba(176,168,216,0.52)', lineHeight: 1.6 }}>{item}</span>
@@ -668,7 +676,7 @@ export function LandingScreen({ onComplete }: Props) {
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = 'rgba(139,127,245,0.45)'; el.style.background = 'rgba(139,127,245,0.07)'; el.style.color = '#fff' }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = 'rgba(255,255,255,0.16)'; el.style.background = 'transparent'; el.style.color = 'rgba(240,238,255,0.8)' }}
             >
-              Get started with Otto <ArrowRight size={14} weight="bold" />
+              Start using Otto <ArrowRight size={14} weight="bold" />
             </button>
             <button onClick={() => setMode('returning')} style={{ ...ghostBtn, padding: '9px 20px', fontSize: 13, borderColor: 'rgba(255,255,255,0.08)', color: 'rgba(176,168,216,0.45)' }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = 'rgba(255,255,255,0.18)'; el.style.color = 'rgba(176,168,216,0.7)' }}
@@ -681,7 +689,7 @@ export function LandingScreen({ onComplete }: Props) {
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.6 }}
             style={{ marginTop: 18, fontSize: 11.5, color: 'rgba(107,100,148,0.55)', letterSpacing: '0.01em' }}
           >
-            Bring your own API keys · Your data stays yours
+            Bring your own API keys &nbsp;·&nbsp; Your data stays yours
           </motion.p>
         </motion.div>
 
