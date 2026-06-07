@@ -61,7 +61,8 @@ export function PagePanel({ page, onClose, isMobile }: Props) {
               onDragEnd={(_e, info) => {
                 if (info.offset.y > 80 || info.velocity.y > 400) onClose()
               }}
-              className="fixed left-0 right-0 flex flex-col overflow-hidden"
+              className="fixed left-0 right-0 flex flex-col"
+              style={{ touchAction: 'pan-x' }}
               style={{
                 top: '6%',
                 bottom: 88,
@@ -105,7 +106,7 @@ export function PagePanel({ page, onClose, isMobile }: Props) {
               </div>
 
               {/* Content — no inner exit animation, parent handles close */}
-              <div className="flex-1 overflow-hidden min-h-0 relative">
+              <div className="flex-1 min-h-0 relative" style={{ overflow: 'hidden', borderTopLeftRadius: 24, borderTopRightRadius: 24 }}>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={page}
