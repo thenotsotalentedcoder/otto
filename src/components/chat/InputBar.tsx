@@ -124,7 +124,7 @@ export function InputBar({ onSend, isRecording, isTranscribing = false, onRecord
   return (
     <div
       className="flex-shrink-0 relative"
-      style={{ padding: `8px 16px ${isMobile ? 92 : 16}px` }}
+      style={{ padding: isMobile ? `8px 16px calc(92px + env(safe-area-inset-bottom))` : '8px 16px 16px' }}
     >
       {/* Recording / transcribing indicator */}
       <AnimatePresence>

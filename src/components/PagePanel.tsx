@@ -55,6 +55,12 @@ export function PagePanel({ page, onClose, isMobile }: Props) {
                 ? { duration: 0.2 }
                 : { type: 'spring', stiffness: 380, damping: 36, mass: 0.9 }
               }
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragElastic={{ top: 0, bottom: 0.3 }}
+              onDragEnd={(_e, info) => {
+                if (info.offset.y > 80 || info.velocity.y > 400) onClose()
+              }}
               className="fixed left-0 right-0 flex flex-col overflow-hidden"
               style={{
                 top: '6%',
@@ -72,7 +78,7 @@ export function PagePanel({ page, onClose, isMobile }: Props) {
               onClick={e => e.stopPropagation()}
             >
               {/* Drag handle */}
-              <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
+              <div className="flex justify-center pt-3 pb-1 flex-shrink-0" style={{ cursor: 'grab', touchAction: 'none' }}>
                 <div style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.2)' }} />
               </div>
 
