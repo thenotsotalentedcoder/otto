@@ -20,7 +20,7 @@ export function MobileNav({ activePage, onPageClick }: Props) {
   return (
     <div
       className="fixed bottom-0 left-0 right-0 flex justify-center items-end"
-      style={{ paddingBottom: 20, zIndex: 50, pointerEvents: 'none' }}
+      style={{ paddingBottom: 'calc(20px + env(safe-area-inset-bottom))', zIndex: 50, pointerEvents: 'none' }}
     >
       <div style={{ pointerEvents: 'auto' }}>
         <LiquidGlassCard
