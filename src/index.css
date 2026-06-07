@@ -66,7 +66,15 @@
   padding: 0;
 }
 
-html, body, #root {
+html {
+  height: 100%;
+  width: 100%;
+  /* Extend bg into safe area on iOS PWA */
+  background-color: #05040f;
+  min-height: -webkit-fill-available;
+}
+
+body, #root {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -81,7 +89,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* ── Background image — fixed, fills viewport ───────────────────── */
@@ -92,7 +99,10 @@ body {
 #root::before {
   content: '';
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
   background-image: url('/src/assets/bg.png');
   background-size: cover;
   background-position: center top;
@@ -104,7 +114,10 @@ body {
 #root::after {
   content: '';
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
   background: linear-gradient(
     160deg,
     rgba(4, 3, 18, 0.45) 0%,
